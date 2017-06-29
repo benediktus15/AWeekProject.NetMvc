@@ -54,7 +54,7 @@ namespace ExamAppLogin.Controllers
         {
             using (OurDbContext db = new OurDbContext())
             {
-                var usr = db.userAccount.Single(u => u.Username == user.Username && u.Password == user.Password);
+                var usr = db.userAccount.Single(u => u.Username == user.Username);
                 if (usr != null)
                 {
                     Session["UserID"] = usr.UserID.ToString();
@@ -63,7 +63,7 @@ namespace ExamAppLogin.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError("", "Username or Password is wrong");
+                    ModelState.AddModelError("", "Username is wrong");
                 }
             }
             return View();
@@ -79,6 +79,11 @@ namespace ExamAppLogin.Controllers
             {
                 return RedirectToAction("Login");
             }
+        }
+
+        public ActionResult Results()
+        {
+            return View();
         }
     }
 }

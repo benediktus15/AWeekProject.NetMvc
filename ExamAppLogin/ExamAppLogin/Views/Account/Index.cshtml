@@ -7,29 +7,32 @@
 <h2>Daftar Peserta</h2>
 
 <p>
-    <button type="button" class="btn btn-secondary">@Html.ActionLink("Create New", "Create")</button>
+    <button type="button" class="btn btn-secondary">@Html.ActionLink("Create Account", "Register")</button>
     <button type="button" class="btn btn-secondary">@Html.ActionLink("Login", "Login")</button>
 </p>
 
 <table class="table">
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.FirstName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.LastName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Email)
-        </th>
+        @*<th>
+        @Html.DisplayNameFor(model => model.FirstName)
+    </th>
+    <th>
+        @Html.DisplayNameFor(model => model.LastName)
+    </th>
+    <th>
+        @Html.DisplayNameFor(model => model.Email)
+    </th>*@
         <th>
             @Html.DisplayNameFor(model => model.Username)
+        </th>
+        <th>
+            Results
         </th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.FirstName)
         </td>
         <td>
@@ -37,9 +40,12 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Email)
-        </td>
+        </td>*@
         <td>
             @Html.DisplayFor(modelItem => item.Username)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FirstName)
         </td>
     </tr>
 }
