@@ -1,0 +1,49 @@
+﻿@model Pagination.Models.Pagination[]
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+
+}
+
+<h2>Detail</h2>
+
+<table class="table">
+    <thead class="thead-inverse">
+        <tr>
+            <th>#</th>
+            <th>Soal</th>
+            <th>A</th>
+            <th>B</th>
+            <th>C</th>
+            <th>D</th>
+            <th>Jawab</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var a in Model)
+{
+        <tr>
+            <th scope="row">@a.no</th>
+            <td>@a.soal</td>
+            @foreach (var b in @a.pilih)
+            {
+                <td>@b.a</td>
+                <td>@b.b</td>
+                <td>@b.c</td>
+                <td>@b.d</td>
+            }
+            <td>@a.jawab</td>
+            <td><a href="@Url.Action("EditContent", new { id = a.no })" class="btn btn-warning btn-sm margin-right">
+                <span class="glyphicon glyphicon-edit"></span><span class="hidden-xs"> Edit</span></a>
+            </td>
+            <td>
+                <a href="@Url.Action("Delete", new { id = a.no })" class="btn btn-warning btn-sm margin-right">
+                    <span class="glyphicon glyphicon-edit"></span><span class="hidden-xs"> Delete</span>
+                </a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

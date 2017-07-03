@@ -1,0 +1,56 @@
+﻿@model Pagination.Models.Pagination
+@{
+    ViewBag.Title = "Edit Soal";
+}
+
+<h2>EditContent</h2>
+
+
+@using (Html.BeginForm())
+{
+    <div class="form-group">
+        @Html.HiddenFor(m => m.no)
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table">
+                <thead class="thead-inverse">
+                    <tr>
+                        <th>Soal</th>
+                        <th>A</th>
+                        <th>B</th>
+                        <th>C</th>
+                        <th>D</th>
+                        <th>Jawab</th>
+                        <th>Save</th>
+                        <th>Cancel</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>@Html.TextBoxFor(m => m.soal, new { @class = "form-control" })</td>
+                    @for (var i = 0; i < Model.pilih.Length; i++)
+                    {
+                        <td>@Html.TextBoxFor(m => Model.pilih[i].a, new { @class = "form-control" })</td>
+                        <td>@Html.TextBoxFor(m => Model.pilih[i].b, new { @class = "form-control" })</td>
+                        <td>@Html.TextBoxFor(m => Model.pilih[i].c, new { @class = "form-control" })</td>
+                        <td>@Html.TextBoxFor(m => Model.pilih[i].d, new { @class = "form-control" })</td>
+                    }
+                        <td>@Html.TextBoxFor(m => m.jawab, new { @class = "form-control" })</td>
+                        <td>
+                            <button type="submit" class="btn btn-success btn-sm margin-right">
+                                <span class="glyphicon glyphicon-save"></span> Save
+                            </button>
+                        </td>
+                        <td>
+                            <a href="@Url.Action("Index")" class="btn btn-warning btn-sm">
+                                <span class="glyphicon glyphicon-remove"></span> Cancel
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+ }

@@ -1,0 +1,57 @@
+﻿@model Pagination.Models.Pagination
+@{
+    ViewBag.Title = "Add1";
+}
+
+@using (Html.BeginForm())
+{
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <div class="form-group">
+                    @Html.HiddenFor(m => m.no)
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <table class="table">
+                            <thead class="thead-inverse">
+                                <tr>
+                                    <th>Soal</th>
+                                    <th>A</th>
+                                    <th>B</th>
+                                    <th>C</th>
+                                    <th>D</th>
+                                    <th>Jawab</th>
+                                    <th>Save</th>
+                                    <th>Cancel</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>@Html.TextBoxFor(m => m.soal, new { @class = "form-control" })</td>
+                                        <td>@Html.TextBoxFor(m => Model.pilih[0].a, new { @class = "form-control" })</td>
+                                        <td>@Html.TextBoxFor(m => Model.pilih[0].b, new { @class = "form-control" })</td>
+                                        <td>@Html.TextBoxFor(m => Model.pilih[0].c, new { @class = "form-control" })</td>
+                                        <td>@Html.TextBoxFor(m => Model.pilih[0].d, new { @class = "form-control" })</td>
+                                    <td>@Html.TextBoxFor(m => m.jawab, new { @class = "form-control" })</td>
+                                    <td>
+                                        <button type="submit" class="btn btn-success btn-sm margin-right">
+                                            <span class="glyphicon glyphicon-save"></span> Save
+                                        </button>
+                                    </td>
+                                    <td>
+                                        <a href="@Url.Action("Tmp")" class="btn btn-warning btn-sm">
+                                            <span class="glyphicon glyphicon-remove"></span> Cancle
+                                        </a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+

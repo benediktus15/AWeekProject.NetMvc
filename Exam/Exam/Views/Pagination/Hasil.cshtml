@@ -1,0 +1,23 @@
+﻿@model IEnumerable<Pagination.Models.Kumpuls>
+@{
+    ViewBag.Title = "Hasil";
+}
+
+<center><h2>Hasil</h2></center>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nama</th>
+            <th>Nilai</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var pi in Model)
+        {
+            <tr>
+                <td>@pi.Name</td>
+                <td>@pi.Nilai</td>
+            </tr>
+        }
+    </tbody>
+</table>

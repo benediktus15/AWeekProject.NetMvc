@@ -1,0 +1,30 @@
+﻿@model Pagination.Models.Teams
+@{
+    ViewBag.Title = "Add";
+}
+
+<h2>Index</h2>
+<h1><a href="Detail/1">Next</a></h1>
+
+@using (Html.BeginForm())
+{
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                @Html.LabelFor(m => m.Name, new { @class = "control-label" })
+                @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="pad-top">
+                <button type="submit" class="btn btn-success btn-lg margin-right">
+                    <span class="glyphicon glyphicon-save"></span> Save
+                </button>
+                <a href="@Url.Action("Index")" class="btn btn-warning btn-lg">
+                    <span class="glyphicon glyphicon-remove"></span> Cancel
+                </a>
+            </div>
+        </div>
+    </div>
+}
+

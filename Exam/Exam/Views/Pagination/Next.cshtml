@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewBag.Title = "Mo";
+}
+
+<h2>Next</h2>
+
+@using (Html.BeginForm())
+{
+    <div class="row">
+        <div class="col-md-12">
+            <div class="pad-top">
+                <button type="button" class="btn btn-primary" onclick="bisa()">Submit</button>
+                <script type="text/javascript">
+                function bisa() {
+                        window.open('Detail/1?val=0&stat=1', "_self");
+                    }
+                </script>
+            </div>
+        </div>
+    </div>
+}
+

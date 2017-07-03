@@ -1,0 +1,45 @@
+﻿@model Pagination.Models.Pagination
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Soal";
+}
+
+<center><h2>Soal</h2></center>
+    @if(Model.soal == null)
+    {
+        <h1>NULL</h1>
+        <script>window.open('@(ViewBag.so + 1)?val=@(ViewBag.val)&stat=0');</script>
+        
+    }
+
+    @if (Model.soal != null)
+    {
+        <h1>@Model.soal</h1>
+        foreach (var pil in Model.pilih)
+        {
+            <h4>A. @pil.a</h4><br />
+            <h4>B. @pil.b</h4><br />
+            <h4>C. @pil.c</h4><br />
+            <h4>D. @pil.d</h4><br />
+        }
+
+        <label>Pilih Jawaban</label><br />
+        <select class="form-control" id="Jawaban" name="Jawaban">
+            <option>Select</option>
+            <option>A</option>
+            <option>B</option>
+            <option>C</option>
+            <option>D</option>
+        </select><br />
+        <button type="button" class="btn btn-primary" onclick="bisa()">Submit</button>
+        <script type="text/javascript">
+            function bisa() {
+                if (document.getElementById("Jawaban").value == "@Model.jawab") {
+                    window.open('@(ViewBag.so + 1)?val=@(ViewBag.val + 10)&stat=@(ViewBag.stat + 1)', "_self");
+                }
+                else {
+                    window.open('@(ViewBag.so + 1)?val=@(ViewBag.val + 0)&stat=@(ViewBag.stat + 1)', "_sellf");
+                }
+            }
+        </script>
+    }

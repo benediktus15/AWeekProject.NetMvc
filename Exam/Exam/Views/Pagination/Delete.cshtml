@@ -1,0 +1,49 @@
+﻿@model Pagination.Models.Pagination
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+@using (Html.BeginForm())
+{
+        @Html.HiddenFor(m => m.no)
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Soal</th>
+                <th>A</th>
+                <th>B</th>
+                <th>C</th>
+                <th>D</th>
+                <th>Jawab</th>
+                <th>Delete</th>
+                <th>Cancel</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">@Model.no</th>
+                <td>@Model.soal</td>
+
+            @for (var i = 0; i < Model.pilih.Length; i++)
+            {
+                <td>@Model.pilih[i].a</td>
+                <td>@Model.pilih[i].b</td>
+                <td>@Model.pilih[i].c</td>
+                <td>@Model.pilih[i].d</td>
+            }
+                <td>@Model.jawab</td>
+                <td><button type="submit" class="btn btn-success btn-sm margin-right">
+                    <span class="glyphicon glyphicon-save"></span> Delete
+                    </button>
+                </td>
+                <td><a href="@Url.Action("Tmp")" class="btn btn-warning btn-sm">
+                    <span class="glyphicon glyphicon-remove"></span> Cancel</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+}
