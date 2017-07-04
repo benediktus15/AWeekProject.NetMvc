@@ -4,7 +4,6 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using ExamAppLogin.Models;
-using ExamAppLogin.Data;
 
 namespace ExamAppLogin.Controllers
 {
@@ -17,26 +16,6 @@ namespace ExamAppLogin.Controllers
             {
                 return View(db.userAccount.ToList());
             }
-        }
-
-        public AccountController()
-        {
-            _pagination = new PaginationRepository();
-        }
-        // GET: Pagination
-        private PaginationRepository _pagination = new PaginationRepository();
-        public ActionResult Detail(int? id, int? val, int? stat)
-        {
-            ViewBag.val = val;
-            ViewBag.stat = stat;
-            ViewBag.so = id;
-
-            if (id == null)
-                return HttpNotFound();
-
-            var All = _pagination.getPage((int)id);
-            int k = All.no;
-            return View(All);
         }
 
         // Registration
@@ -75,16 +54,16 @@ namespace ExamAppLogin.Controllers
         {
             using (OurDbContext db = new OurDbContext())
             {
-                var usr = db.userAccount.Single(u => u.Username == user.Username);
+                var usr = db.userAccount.Single(u => u.Username == user.Username && u.Password == user.Password);
                 if (usr != null)
                 {
                     Session["UserID"] = usr.UserID.ToString();
                     Session["Username"] = usr.Username.ToString();
-                    return RedirectToAction("Detail");
+                    return RedirectToAction("LoggedIn");
                 }
                 else
                 {
-                    ModelState.AddModelError("", "Username is wrong");
+                    ModelState.AddModelError("", "Username or Password is wrong !");
                 }
             }
             return View();
